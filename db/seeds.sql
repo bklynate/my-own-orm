@@ -1,0 +1,3 @@
+INSERT INTO burgers_db VALUES (DEFAULT, "bonChon Burger", DEFAULT, DEFAULT),
+(DEFAULT, "Spicy Honey Bacon Burger", DEFAULT, DEFAULT),
+(DEFAULT, "NOM NOM Burger", DEFAULT, DEFAULT);

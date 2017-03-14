@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <div class="main-header-content">
+        <h1>Eat The Burger</h1>
+        <img src="imgs/burger_icon.png" alt="" class="burger-icon">
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="addedBurgers-area">
+            {{#each results}}
+              {{#unless this.devoured}}
+                <div class="">
+                  <p class="burger-name">{{this.burger_name}}</p>
+                  <form action="/updateBurgerStatus/{{this.id}}?_method=PUT" method="POST" class="inline-display">
+                      <div class="form-group">
+                          <input type="hidden" name="devoured" value="1">
+                          <button type="submit" class="btn btn-success btn-xs">Devour</button>
+                      </div>
+                  </form>
+                </div>
+              {{/unless}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="devouredBurgers-area">
+            {{#each results}}
+              {{#if this.devoured}}
+                <div class="">
+                  <p class="burger-name">{{this.burger_name}}</p>
+                  <form action="/updateBurgerStatus/{{this.id}}?_method=PUT" method="POST" class="inline-display">
+                      <div class="form-group">
+                          <input type="hidden" name="devoured" value="0">
+                          <button type="submit" class="btn btn-danger btn-xs">Throw up!</button>
+                      </div>
+                  </form>
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="header-form-div">
+        <form method="POST" action="/createBurger">
+          <div class="form-group">
+            <label for="burger">Burger</label>
+            <input type="text" class="form-control" id="newBurger" placeholder="enter a new type of burger" name="burger_name">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
